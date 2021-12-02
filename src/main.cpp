@@ -13,7 +13,7 @@
 
 #include <Arduino.h> 
 
-void BlinkLed(int Led) ;
+void BlinkLed() ;
 
 
 
@@ -24,6 +24,7 @@ const int LED_VERTE_1 = 12 ;
 const int LED_ROUGE_2 = 11 ;
 const int LED_JAUNE_2 = 10 ;
 const int LED_VERTE_2 = 9 ;
+int Led ;
 
 void setup()
 {
@@ -49,7 +50,7 @@ void setup()
 void loop() {
     // première séquence
     digitalWrite(LED_ROUGE_1, HIGH);
-    BlinkLed(LED_VERTE_2) ;
+     BlinkLed() ;
     digitalWrite(LED_VERTE_2, HIGH);
     digitalWrite(LED_ROUGE_2, LOW) ;
 
@@ -68,7 +69,7 @@ void loop() {
     digitalWrite(LED_JAUNE_1, LOW);
     digitalWrite(LED_JAUNE_2, LOW);
     digitalWrite(LED_ROUGE_2, HIGH);
-    BlinkLed(LED_VERTE_1) ;
+    BlinkLed() ;
     digitalWrite(LED_VERTE_1, HIGH) ;
     digitalWrite(LED_ROUGE_1, LOW) ;
 
@@ -84,7 +85,7 @@ void loop() {
 
 }
 
-void BlinkLed(int Led){
+void BlinkLed(){
    pinMode(Led, OUTPUT);
 
 
