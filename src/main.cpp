@@ -10,9 +10,10 @@
 
 
 
-#include <iostream>
-#include <string>
-#include <Arduino.h>
+
+#include <Arduino.h> 
+
+void BlinkLed(int Led) ;
 
 
 
@@ -48,42 +49,48 @@ void setup()
 void loop() {
     // première séquence
     digitalWrite(LED_ROUGE_1, HIGH);
+    BlinkLed(LED_VERTE_2) ;
     digitalWrite(LED_VERTE_2, HIGH);
+    digitalWrite(LED_ROUGE_2, LOW) ;
 
-    delay(3000);
+    delay(6000);
 
     // deuxième séquence
     digitalWrite(LED_VERTE_2, LOW);
-    digitalWrite(LED_JAUNE_2, HIGH);
+    digitalWrite(LED_JAUNE_1, HIGH);
+    digitalWrite(LED_JAUNE_2, HIGH) ;
+    
 
-    delay(3000);
+
+    delay(2000);
 
     // troisième séquence
+    digitalWrite(LED_JAUNE_1, LOW);
     digitalWrite(LED_JAUNE_2, LOW);
     digitalWrite(LED_ROUGE_2, HIGH);
+    BlinkLed(LED_VERTE_1) ;
+    digitalWrite(LED_VERTE_1, HIGH) ;
+    digitalWrite(LED_ROUGE_1, LOW) ;
 
-    delay(3000);
+    delay(6000);
 
-    /* deuxième partie du programme, on s'occupe du feux numéro 2 */
+    // Phase 4 : V1 éteint et J1, J2 et R2 allumés
+    digitalWrite(LED_VERTE_1, LOW);   
+    digitalWrite(LED_JAUNE_1, HIGH);  
+    digitalWrite(LED_JAUNE_2, HIGH);  
+    digitalWrite(LED_ROUGE_2, HIGH);
+      
+    delay(2000) ;
 
-    // première séquence
-    digitalWrite(LED_VERTE_1, HIGH);
-    digitalWrite(LED_ROUGE_1, LOW);
-   
-    delay(3000);
+}
 
-    // deuxième séquence
-    digitalWrite(LED_VERTE_1, LOW);
-    digitalWrite(LED_JAUNE_1, HIGH);
+void BlinkLed(int Led){
+   pinMode(Led, OUTPUT);
 
-    delay(3000);
 
-    // deuxième séquence
-    digitalWrite(LED_JAUNE_1, LOW);
-    digitalWrite(LED_ROUGE_1, HIGH);
-
-    delay(3000);
-
-    /* le programme va reboucler et revenir au début */
+  digitalWrite(Led, HIGH);   // allume la LED
+  delay(1000);                 // attend 500ms
+  digitalWrite(Led, LOW);    // éteint la LED
+  delay(1000);                 // attend 500ms
 }
 
